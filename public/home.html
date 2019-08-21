@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MY APP</title>
+</head>
+
+<body>
+
+
+    <!--  SINGLE FILE -->
+    <H1>SINGLE FILE UPLOAD</H1>
+    <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+        Select File:<input type="file" name="myFile" />
+        <input type="submit" value="Upload a file" />
+    </form>
+
+    <!-- MULTIPLE FILES -->
+
+    <H1>MULTIPLE FILE UPLOAD</H1>
+    <form action="/uploadmultiple" enctype="multipart/form-data" method="POST">
+        Select Files: <input type="file" name="myFiles" multiple>
+        <input type="submit" value="Upload your files" />
+    </form>
+
+    <!--   PHOTO-->
+
+    <H1>SINGLE PHOTO UPLOAD</H1>
+
+    <form action="/upload/photo" enctype="multipart/form-data" method="POST">
+        Select Image:<input type="file" name="myImage" accept="image/*" />
+        <input type="text" name="imagesName" placeholder="Image Name">
+        <input type="submit" value="Upload Photo" />
+    </form>
+
+    <!--  Multiple PHOTO-->
+
+    <H1>MULTIPLE PHOTO UPLOAD</H1>
+    <form action="/upload/multiplePhoto" enctype="multipart/form-data" method="POST">
+        Select Images:<input type="file" name="myImages" accept="image/*" multiple>
+        <input type="submit" value="Upload Photo" />
+    </form>
+
+    <!-- input file accepts -->
+    <!-- https://www.w3schools.com/tags/att_input_accept.asp -->
+
+</body>
+
+</html>
