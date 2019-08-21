@@ -25,14 +25,28 @@ router.get("/api/pics", function(req, res) {
     res.json(result);
   }).catch((err) => {
       console.log(err);
-    });
+  });
 })
 
 
 
 router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
-    const file = req.file
-    var body = req.body;
+  const file = req.file
+  var body = req.body;
+  console.log(body);
+
+  var dbSelect;
+
+  if (body.database === "Picture") {
+    dbSelect = db.Picture;
+
+  }
+  else if (body.database === "Pic") {
+        dbSelect = db.Pic;
+
+  }
+
+
     if (!file) {
         const error = new Error('Please upload a file')
         error.httpStatusCode = 400
@@ -44,7 +58,7 @@ router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
         picName: body.imageName,
         picColor: body.imageColor
     }
-    db.Picture.create(body).then((result) => {
+    dbSelect.create(body).then((result) => {
         res.redirect("/")
         }).catch((err) => {
         console.log(err);

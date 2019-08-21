@@ -1,7 +1,5 @@
-
-
-     <!-- SINGLE FILE -->
-    <!-- <H1>SINGLE FILE UPLOAD</H1>
+<!-- SINGLE FILE -->
+<!-- <H1>SINGLE FILE UPLOAD</H1>
     <form action="/uploadfile" enctype="multipart/form-data" method="POST">
         Select File:<input type="file" name="myFile" />
         <input type="submit" value="Upload a file" />
@@ -9,15 +7,15 @@
 
     <!-- MULTIPLE FILES -->
 
-    <!-- <H1>MULTIPLE FILE UPLOAD</H1>
+<!-- <H1>MULTIPLE FILE UPLOAD</H1>
     <form action="/uploadmultiple" enctype="multipart/form-data" method="POST">
         Select Files: <input type="file" name="myFiles" multiple>
         <input type="submit" value="Upload your files" />
     </form> -->
 
-    <!--   PHOTO -->
+<!--   PHOTO -->
 
-    <!-- <H1>SINGLE PHOTO UPLOAD</H1> -->
+<!-- <H1>SINGLE PHOTO UPLOAD</H1> -->
 <!--
     <form action="/upload/photo" enctype="multipart/form-data" method="POST">
         Select Image:<input type="file" name="myImage" accept="image/*" />
@@ -26,52 +24,59 @@
         <input type="submit" value="Upload Photo" />
     </form> -->
 
-    <!--  Multiple PHOTO-->
+<!--  Multiple PHOTO-->
 
-    <!-- <H1>MULTIPLE PHOTO UPLOAD</H1>
+<!-- <H1>MULTIPLE PHOTO UPLOAD</H1>
     <form action="/upload/multiplePhoto" enctype="multipart/form-data" method="POST">
         Select Images:<input type="file" name="myImages" accept="image/*" multiple>
         <input type="submit" value="Upload Photo" />
     </form> -->
 
-    <!-- input file accepts -->
-    <!-- https://www.w3schools.com/tags/att_input_accept.asp -->
+<!-- input file accepts -->
+<!-- https://www.w3schools.com/tags/att_input_accept.asp -->
 
 
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Multer File Uploader</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div class="container">
         <div class="jumbotron text-center">
-    <H1>SINGLE PHOTO UPLOAD</H1>
+            <H1>SINGLE PHOTO UPLOAD</H1>
             <div class="row">
                 <form action="/upload/photo" enctype="multipart/form-data" method="POST">
                     Select Image:<input type="file" name="myImage" accept="image/*" />
                     <input type="text" name="imageName" placeholder="Image Name">
                     <input type="text" name="imageColor" placeholder="Image Color">
+                    <!-- <input type="checkbox" name="db1" value="Picture">Picture<br>
+                    <input type="checkbox" name="db2" value="Pic">Pic<br> -->
+                    <input type="radio" name="database" value="Picture" checked> DB1<br>
+                    <input type="radio" name="database" value="Pic"> DB2<br>
                     <input type="submit" value="Upload Photo" />
                 </form>
             </div>
             <br>
-    <H1>MULTIPLE PHOTO UPLOAD</H1>
+            <H1>MULTIPLE PHOTO UPLOAD</H1>
             <div class="row">
                 <div class="row">
-                <form action="/upload/multiplePhoto" enctype="multipart/form-data" method="POST">
-                    Select Images:<input type="file" name="myImages" accept="image/*" multiple>
-                    <input type="submit" value="Upload Photo" />
-                </form>
+                    <form action="/upload/multiplePhoto" enctype="multipart/form-data" method="POST">
+                        Select Images:<input type="file" name="myImages" accept="image/*" multiple>
+                        <input type="submit" value="Upload Photo" />
+                    </form>
 
                 </div>
 
@@ -80,17 +85,17 @@
         </div>
 
 
-    <div class="container">
-        <div class="row">
-        <div id="updatePic" class="col">
+        <div class="container">
+            <div class="row">
+                <div id="updatePic" class="col">
+                </div>
             </div>
+            <div id="picsContainer"></div>
+
+
+
+
         </div>
-        <div id="picsContainer"></div>
-
-
-
-
-    </div>
 
 
     </div>
@@ -98,8 +103,13 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="./js/pics.js"></script>
-  </body>
+</body>
+
 </html>
