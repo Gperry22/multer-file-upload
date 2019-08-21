@@ -23,25 +23,26 @@ function postPics(results) {
 
     results.forEach(pic => {
         console.log(pic.id);
-        var picLink = pic.pictureLink.slice(7)
-        var div = $("<div>")
-        var img = $("<img>");
+        var picLink = pic.pictureLink.slice(7);
 
-        img.attr("src", picLink);
-        img.addClass("imgSize picClick");
-        img.data("data-id", pic.id);
-        var p1 = $("<p>");
-        p1.text(pic.picName);
-        var p2 = $("<p>");
-        p2.text(pic.picColor)
-        div.append(img,p1,p2)
-        $("#picsContainer").prepend(div)
+        var card = `
+        <div class="card mLeft"  style="width: 18rem;" >
+            <img class="card-img-top imgSize" src="${picLink}" alt="Card image cap">
+            <div class="card-body" >
+             <p class="card-text">${pic.picName}</p>
+             <p class="card-text">${pic.picColor}</p>
+             <button id="updateCard" data-id="${pic.id}" >Update</button>
+        </div>
+    </div>
+    `
+        $("#picsContainer").prepend(card)
     });
 }
 
-$("#picsContainer").on("click", ".picClick", function (e) {
+
+$("#picsContainer").on("click", "#updateCard", function (e) {
     e.preventDefault();
-    var picId = ($(this).data("data-id"))
+    var picId = ($(this).data("id"))
     addInputBoxes(picId)
 });
 
