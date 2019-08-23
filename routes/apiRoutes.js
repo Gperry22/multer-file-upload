@@ -7,10 +7,17 @@ var router = express.Router();
 // storage option to keep file name extensions
 const storage = multer.diskStorage({
  destination: function (req, file, cb) {
-   cb(null, 'public/images')
+   cb(null, 'public/uploads')
  },
- filename: function (req, file, cb) {
-   cb(null, file.originalname)
+  filename: function (req, file, cb) {
+    var fileExt = file.originalname.split(".");
+    var uniqueNum = Date.now();
+    for (let i = 0; i < 8; i++) {
+      var ranNum = Math.floor(Math.random() * 999999) + 1000
+      uniqueNum += "-"+ranNum
+    }
+    var fileName = "pic-"+uniqueNum+"."+ fileExt[1];
+   cb(null, fileName)
  }
 })
 //storing storage option "upload"
@@ -32,9 +39,8 @@ router.get("/api/pics", function(req, res) {
 
 router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
   const file = req.file
+  console.log(file);
   var body = req.body;
-  console.log(body);
-
   var dbSelect;
 
   if (body.database === "Picture") {
@@ -45,7 +51,6 @@ router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
         dbSelect = db.Pic;
 
   }
-
 
     if (!file) {
         const error = new Error('Please upload a file')
@@ -67,11 +72,10 @@ router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
 
 
 
-router.post('/upload/multiplePhoto', upload.array('myImages', 4), (req, res, next) => {
-    const files = req.files
+router.post('/upload/multiplePhoto', upload.array('myImages', 6), (req, res, next) => {
+  const files = req.files
     var fileLength = files.length;
     var count = 0
-    console.log(fileLength);
 
   if (!files) {
     const error = new Error('Please choose files')
