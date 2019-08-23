@@ -2,8 +2,6 @@ const express = require('express');
 const multer = require('multer');
 var router = express.Router();
 
-
-// TODO write a function the changes the filename and keeps extension
 // storage option to keep file name extensions
 const storage = multer.diskStorage({
  destination: function (req, file, cb) {
@@ -23,9 +21,7 @@ const storage = multer.diskStorage({
 //storing storage option "upload"
 const upload = multer({ storage: storage })
 
-
 var db = require('../models');
-
 
 router.get("/api/pics", function(req, res) {
   db.Picture.findAll({}).then(result => {
@@ -34,7 +30,6 @@ router.get("/api/pics", function(req, res) {
       console.log(err);
   });
 })
-
 
 
 router.post('/upload/photo', upload.single('myImage'), (req, res, next) => {
